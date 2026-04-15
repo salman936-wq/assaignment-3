@@ -1,25 +1,46 @@
+// fct te text jacche kina check koro
+// let spliter text use kore text split kor " "
+// split = try koro for loop with i++
+// "i" er vitore shobchye boro word konta ber koro
+// shobchye boro word push koro object.longwords ke
+
+// str er shob space remove kore
+// count koro withoutSpace.length str ke
+// push koro total token
+
 function analyzeText(str) {
-       if(typeof str !=="string"){
-          return 'Invalid';
 
-        }
-
-    let words =str.split(" ");
-    let total_token=str.replace(/\s/g,'').length;
-    let long_words='';
-
-    for(let word of words){
-       
-       if(word.length>long_words.length){
-        long_words=word;
-      
-    } 
+    if (typeof str !== "string") {
+        return "Invalid";
     }
-    return{
-        longword: long_words,
-        token : total_token
-          };
+    else if (str.trim().length === 0) {
+        return "Invalid";
+    }
+
+    let push = {
+        longwords: "",
+        token: 0
+    }
+
+    // Big text find
+    let spliterText = str.split(" ")
+    
+    for (let i = 0; i < spliterText.length; i++) {
+        push.token = push.token + spliterText[i].length;
+        if (spliterText[i].length > push.longwords.length) {
+            push.longwords = spliterText[i];
+        }
+    }
+    // Big Text Find
+
+    return push;
 }
 
-// const text =analyzeText("Keep coding keep shining" );
-// console.log("total:",text);
+// let text = "         ";
+// let final = analyzeText(text);
+// console.log(final);
+
+
+
+
+
